@@ -72,13 +72,104 @@
                     <view key="view" contentMode="scaleToFill" id="ogy-U4-fjh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-Er-Lhv">
+                                <rect key="frame" x="25" y="25" width="50" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2lx-hN-4ef"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ots-07-Gv2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="Back:" destination="2qr-a4-XnF" eventType="touchUpInside" id="iTK-rW-SHm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P48-nO-3v3">
+                                <rect key="frame" x="30" y="641" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="np9-lh-b9Q"/>
+                                    <constraint firstAttribute="width" constant="150" id="q7U-dO-GJT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <state key="normal" title="delete last picture"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRB-Ik-AP7">
+                                <rect key="frame" x="274" y="641" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9gG-5b-aHQ"/>
+                                    <constraint firstAttribute="width" constant="100" id="otA-yo-lQB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <state key="normal" title="take photo"/>
+                                <connections>
+                                    <action selector="TakePhoto:" destination="2qr-a4-XnF" eventType="touchUpInside" id="tjN-aC-Ec7"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzX-yy-UD4">
+                                <rect key="frame" x="87" y="208" width="240" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="842-4B-PjJ"/>
+                                    <constraint firstAttribute="height" constant="320" id="lR8-Zy-92M"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the N-th photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkC-Wq-2Gz">
+                                <rect key="frame" x="30" y="138" width="354" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8bz-ka-XGR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lY7-dz-ngR">
+                                <rect key="frame" x="214" y="25" width="175" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="HUb-8E-VEO"/>
+                                    <constraint firstAttribute="height" constant="40" id="R5U-fQ-jUH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <state key="normal" title="start 3D reconstruction"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please take more than 5 photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZN-XG-KF9">
+                                <rect key="frame" x="25" y="561" width="364" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jji-oi-zP5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kqm-qc-xWq" firstAttribute="trailing" secondItem="aRB-Ik-AP7" secondAttribute="trailing" constant="40" id="0Am-my-b8L"/>
+                            <constraint firstItem="RFF-Er-Lhv" firstAttribute="top" secondItem="kqm-qc-xWq" secondAttribute="top" constant="25" id="8gQ-Dz-BwP"/>
+                            <constraint firstItem="RFF-Er-Lhv" firstAttribute="leading" secondItem="kqm-qc-xWq" secondAttribute="leading" constant="25" id="952-Rq-OVq"/>
+                            <constraint firstItem="kqm-qc-xWq" firstAttribute="bottom" secondItem="aRB-Ik-AP7" secondAttribute="bottom" constant="55" id="MOn-xn-3TK"/>
+                            <constraint firstItem="P48-nO-3v3" firstAttribute="leading" secondItem="kqm-qc-xWq" secondAttribute="leading" constant="30" id="PAz-vc-XfM"/>
+                            <constraint firstItem="lY7-dz-ngR" firstAttribute="top" secondItem="kqm-qc-xWq" secondAttribute="top" constant="25" id="Sbd-r8-hls"/>
+                            <constraint firstItem="xzX-yy-UD4" firstAttribute="top" secondItem="VkC-Wq-2Gz" secondAttribute="bottom" constant="30" id="SeU-qT-9LE"/>
+                            <constraint firstItem="kqm-qc-xWq" firstAttribute="bottom" secondItem="P48-nO-3v3" secondAttribute="bottom" constant="55" id="T93-Wf-4zC"/>
+                            <constraint firstItem="VkC-Wq-2Gz" firstAttribute="leading" secondItem="kqm-qc-xWq" secondAttribute="leading" constant="30" id="d2N-M5-YEx"/>
+                            <constraint firstItem="kqm-qc-xWq" firstAttribute="trailing" secondItem="wZN-XG-KF9" secondAttribute="trailing" constant="25" id="g49-LC-msN"/>
+                            <constraint firstItem="kqm-qc-xWq" firstAttribute="trailing" secondItem="lY7-dz-ngR" secondAttribute="trailing" constant="25" id="iV9-uc-Lrr"/>
+                            <constraint firstItem="P48-nO-3v3" firstAttribute="top" secondItem="wZN-XG-KF9" secondAttribute="bottom" constant="40" id="nTo-YR-2Le"/>
+                            <constraint firstItem="kqm-qc-xWq" firstAttribute="trailing" secondItem="VkC-Wq-2Gz" secondAttribute="trailing" constant="30" id="sw8-n0-nES"/>
+                            <constraint firstItem="xzX-yy-UD4" firstAttribute="centerX" secondItem="ogy-U4-fjh" secondAttribute="centerX" id="t1t-KE-8wp"/>
+                            <constraint firstItem="wZN-XG-KF9" firstAttribute="leading" secondItem="kqm-qc-xWq" secondAttribute="leading" constant="25" id="wKR-cx-CKr"/>
+                            <constraint firstItem="xzX-yy-UD4" firstAttribute="centerY" secondItem="ogy-U4-fjh" secondAttribute="centerY" id="yVy-WW-6Oe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kqm-qc-xWq"/>
                     </view>
+                    <connections>
+                        <outlet property="LastPic" destination="xzX-yy-UD4" id="tYq-bx-VV3"/>
+                        <outlet property="Nlabel" destination="VkC-Wq-2Gz" id="3hZ-rw-ZOL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mX-Td-JfN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="113"/>
+            <point key="canvasLocation" x="924.63768115942037" y="112.50000000000001"/>
         </scene>
     </scenes>
 </document>

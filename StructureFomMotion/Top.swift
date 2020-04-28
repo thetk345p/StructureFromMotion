@@ -42,6 +42,7 @@ class VC_Top: UIViewController {
             // 画面遷移 Screen transition
             let next = storyboard!.instantiateViewController(withIdentifier: "camera")
             next.modalTransitionStyle = .crossDissolve
+            next.modalPresentationStyle = .fullScreen
             self.present(next, animated: true, completion: nil)
         }else{
             // 失敗した場合はアラート表示

@@ -9,9 +9,30 @@
 import Foundation
 import AVFoundation
 
+// 撮った画像を回転させないためのextension
+extension UIImage {
+    func fixedOrientation() -> UIImage {
+        if self.imageOrientation == .up { return self }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: self.size))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}
+
+
 class VC_Camera: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // AppDelegateのインスタンスを取得
     let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // ドキュメントディレクトリの「ファイルURL」（URL型）定義
+    let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+    // Outlet宣言
+    @IBOutlet weak var Nlabel: UILabel!
+    @IBOutlet weak var LastPic: UIImageView!
     
     // OpenCVクラスをインスタンス化
     var openCV = OpenCV()
@@ -25,45 +46,70 @@ class VC_Camera: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         // 撮影回数を初期化
         count = 0;
-        
-        // カメラを起動する Launch camera
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = self
-        present(picker, animated: true, completion: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+                
+        // ラベル
+        Nlabel.text = "This is the " + String(count) + "-th photo"
+        
+        // 最後に撮った写真
+        let path = documentDirectoryFileURL.appendingPathComponent(appDelegate.DirectoryName)
+        let fileURL = URL(fileURLWithPath: path.absoluteString).appendingPathComponent(String(count) + "_Processed.png")
+        // 画像が回転するのを防ぐ(UIImage に extension を設定している)
+        // https://blog.morizotter.com/2015/06/20/uiimage-orientation-problem/
+        let unfixedImage = UIImage(contentsOfFile: fileURL.path)
+        let fixedImage = unfixedImage?.fixedOrientation()
+        LastPic.image = fixedImage //UIImage(contentsOfFile: fileURL.path)?.fixedOrientation()
+        print(fileURL.path)
+    }
+    
+    @IBAction func TakePhoto(_ sender: UIButton) {
+        // カメラを起動
+        let sourceType:UIImagePickerController.SourceType = UIImagePickerController.SourceType.camera
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
+             // インスタンスの作成
+             let cameraPicker = UIImagePickerController()
+             cameraPicker.sourceType = sourceType
+             cameraPicker.delegate = self
+             self.present(cameraPicker, animated: true, completion: nil)
+         }
+         else{
+             print("Can't open camera")
+         }
+    }
+    
 
 
-    /// シャッターボタンを押下した際、確認メニューに切り替わる
+    // 写真を撮った後に呼び出される
     /// - Parameters:
     ///   - picker: ピッカー
     ///   - info: 写真情報
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // ドキュメントディレクトリの「ファイルURL」（URL型）定義
-        var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
+        count += 1
         //UserDefaults のインスタンス生成
         let userDefaults = UserDefaults.standard
         
         
         // 撮影した画像の取得および命名
-        let image = info[.originalImage] as! UIImage
+        let unfixed_image = info[.originalImage] as! UIImage
+        let image = unfixed_image.fixedOrientation()
         var fileName = String(count) + ".png"
         
 
         // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-        var path = documentDirectoryFileURL.appendingPathComponent(appDelegate.DirectoryName + fileName)
-        documentDirectoryFileURL = path
+        var path = documentDirectoryFileURL.appendingPathComponent(appDelegate.DirectoryName)
+        path = path.appendingPathComponent(fileName)
 
-        
         //pngで保存する
         var pngImageData = image.pngData()
         do {
-            try pngImageData!.write(to: documentDirectoryFileURL)
-            userDefaults.set(documentDirectoryFileURL, forKey: "userImage")
+            try pngImageData!.write(to: path)
+            userDefaults.set(path, forKey: "userImage")
         } catch {
             //エラー処理
-            print("エラー")
+            print("error 1")
         }
         
 
@@ -74,26 +120,35 @@ class VC_Camera: UIViewController, UIImagePickerControllerDelegate, UINavigation
         var resultImg: UIImage //結果を格納する
         resultImg = self.openCV.sift(image) //変換
         // *****************************************
-        
-        
+
         fileName = String(count) + "_Processed.png"
         
         // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-        path = documentDirectoryFileURL.appendingPathComponent(appDelegate.DirectoryName + fileName)
-        documentDirectoryFileURL = path
-        
+        path = documentDirectoryFileURL.appendingPathComponent(appDelegate.DirectoryName)
+        path = path.appendingPathComponent(fileName)
+
         // 変換後の画像をpngで保存する
-        pngImageData = image.pngData()
+        pngImageData = resultImg.pngData()
         do {
-            try pngImageData!.write(to: documentDirectoryFileURL)
-            userDefaults.set(documentDirectoryFileURL, forKey: "userImage")
+            try pngImageData!.write(to: path)
+            userDefaults.set(path, forKey: "userImage")
         } catch {
             //エラー処理
-            print("エラー")
+            print("error 2")
         }
         
+        // アルバムにも保存する
+        UIImageWriteToSavedPhotosAlbum(resultImg, nil, nil, nil)
         
         // 前の画面に戻る
-        self.dismiss(animated: true, completion: nil)
+         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    
+    @IBAction func Back(_ sender: UIButton) {
+        // 前の画面に戻る
+         self.dismiss(animated: true, completion: nil)
+    }
+    
 }
