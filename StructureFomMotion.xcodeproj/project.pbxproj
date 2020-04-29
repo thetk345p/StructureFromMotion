@@ -13,6 +13,7 @@
 		C7650597245716AE005F5E9F /* OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = C7650596245716AE005F5E9F /* OpenCV.mm */; };
 		C765059924571EA2005F5E9F /* Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765059824571EA2005F5E9F /* Top.swift */; };
 		C765059B24571EB1005F5E9F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C765059A24571EB1005F5E9F /* Camera.swift */; };
+		C765059E245842F5005F5E9F /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = C765059D245842F5005F5E9F /* noimage.png */; };
 		C7D0DDEE2457037600736031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0DDED2457037600736031 /* AppDelegate.swift */; };
 		C7D0DDF02457037600736031 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0DDEF2457037600736031 /* SceneDelegate.swift */; };
 		C7D0DDF22457037600736031 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0DDF12457037600736031 /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 		C7650596245716AE005F5E9F /* OpenCV.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCV.mm; sourceTree = "<group>"; };
 		C765059824571EA2005F5E9F /* Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top.swift; sourceTree = "<group>"; };
 		C765059A24571EB1005F5E9F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		C765059D245842F5005F5E9F /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noimage.png; path = image/noimage.png; sourceTree = SOURCE_ROOT; };
 		C7D0DDEA2457037600736031 /* StructureFomMotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StructureFomMotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D0DDED2457037600736031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7D0DDEF2457037600736031 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C765059C2458428A005F5E9F /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				C765059D245842F5005F5E9F /* noimage.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		C7D0DDE12457037600736031 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +144,7 @@
 		C7D0DDEC2457037600736031 /* StructureFomMotion */ = {
 			isa = PBXGroup;
 			children = (
+				C765059C2458428A005F5E9F /* Image */,
 				C7D0DDED2457037600736031 /* AppDelegate.swift */,
 				C7D0DDEF2457037600736031 /* SceneDelegate.swift */,
 				C7D0DDF12457037600736031 /* ViewController.swift */,
@@ -291,6 +302,7 @@
 			files = (
 				C7D0DDFA2457037A00736031 /* LaunchScreen.storyboard in Resources */,
 				C7D0DDF72457037A00736031 /* Assets.xcassets in Resources */,
+				C765059E245842F5005F5E9F /* noimage.png in Resources */,
 				C7D0DDF52457037600736031 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

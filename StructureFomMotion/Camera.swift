@@ -22,7 +22,6 @@ extension UIImage {
     }
 }
 
-
 class VC_Camera: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // AppDelegateのインスタンスを取得
     let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -88,6 +87,7 @@ class VC_Camera: UIViewController, UIImagePickerControllerDelegate, UINavigation
     ///   - info: 写真情報
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         count += 1
+        
         //UserDefaults のインスタンス生成
         let userDefaults = UserDefaults.standard
         

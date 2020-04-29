@@ -80,7 +80,9 @@
                                     <constraint firstAttribute="height" constant="40" id="Ots-07-Gv2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                <state key="normal" title="Back"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="Back:" destination="2qr-a4-XnF" eventType="touchUpInside" id="iTK-rW-SHm"/>
                                 </connections>
@@ -100,13 +102,13 @@
                                     <constraint firstAttribute="height" constant="40" id="9gG-5b-aHQ"/>
                                     <constraint firstAttribute="width" constant="100" id="otA-yo-lQB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
                                 <state key="normal" title="take photo"/>
                                 <connections>
                                     <action selector="TakePhoto:" destination="2qr-a4-XnF" eventType="touchUpInside" id="tjN-aC-Ec7"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzX-yy-UD4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="xzX-yy-UD4">
                                 <rect key="frame" x="87" y="208" width="240" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="842-4B-PjJ"/>
@@ -123,13 +125,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lY7-dz-ngR">
-                                <rect key="frame" x="214" y="25" width="175" height="40"/>
+                                <rect key="frame" x="189" y="25" width="200" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="HUb-8E-VEO"/>
+                                    <constraint firstAttribute="width" constant="200" id="HUb-8E-VEO"/>
                                     <constraint firstAttribute="height" constant="40" id="R5U-fQ-jUH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                <state key="normal" title="start 3D reconstruction"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                <state key="normal" title="start 3D reconstruction">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please take more than 5 photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZN-XG-KF9">
                                 <rect key="frame" x="25" y="561" width="364" height="40"/>
@@ -172,4 +176,7 @@
             <point key="canvasLocation" x="924.63768115942037" y="112.50000000000001"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="noimage.png" width="512" height="512"/>
+    </resources>
 </document>
