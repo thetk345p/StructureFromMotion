@@ -138,12 +138,56 @@ class VC_Camera: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
         
         // アルバムにも保存する
-        UIImageWriteToSavedPhotosAlbum(resultImg, nil, nil, nil)
+        //UIImageWriteToSavedPhotosAlbum(resultImg, nil, nil, nil)
         
         // 前の画面に戻る
          self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func matching(_ sender: UIButton) {
+        let file_name1 = String(count - 1) + ".png"
+        let file_name2 = String(count) + ".png"
+        
+        // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+        let path = documentDirectoryFileURL.appendingPathComponent(appDelegate.DirectoryName)
+        let path1 = path.appendingPathComponent(file_name1)
+        let path2 = path.appendingPathComponent(file_name2)
+        
+        //.pathプロパティを引数に画像読み込み
+        let image1 = UIImage(contentsOfFile: path1.path)
+        let image2 = UIImage(contentsOfFile: path2.path)
+        
+        // *************** 画像処理 ***************
+        let resultImg = self.openCV.sfM(image1!, image2!)
+        // *****************************************
+        
+        LastPic.image = resultImg
+        
+        
+        // アルバムに保存
+        UIImageWriteToSavedPhotosAlbum(resultImg, nil, nil, nil)
+        
+        
+        /* Document Directory へ画像保存
+        //UserDefaults のインスタンス生成
+        let userDefaults = UserDefaults.standard
+        
+        // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+        let fileName3 = String(count) + "_matched.png"
+        let path3 = path.appendingPathComponent(fileName3)
+
+        //pngで保存する
+        let pngImageData = resultImg.pngData()
+        do {
+            try pngImageData!.write(to: path3)
+            userDefaults.set(path3, forKey: "userImage")
+        } catch {
+            //エラー処理
+            print("error 1")
+        }
+        */
+        
+    }
     
     
     @IBAction func Back(_ sender: UIButton) {

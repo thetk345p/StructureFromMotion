@@ -9,6 +9,7 @@ target 'StructureFomMotion' do
 
   ### Added by kokifurukawa 2020/04/27 ###
   pod 'OpenCV'
+  pod 'OpenCV2-contrib'
   ########################################
 
   target 'StructureFomMotionTests' do

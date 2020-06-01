@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 //- : インスタンスメソッド
 
 - (UIImage *)SIFT:(UIImage *)img;
+- (UIImage *)SfM:(UIImage *)img1: (UIImage *)img2;
 @end
 
 NS_ASSUME_NONNULL_END
